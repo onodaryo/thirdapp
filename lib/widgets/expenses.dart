@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 import 'package:keihi/models/expense.dart';
 import 'package:keihi/widgets/expensesList.dart';
+import 'package:keihi/widgets/newExpense.dart';
 
 class Expenses extends StatefulWidget {
   const Expenses({super.key});
 
   @override
   State<Expenses> createState() {
-    // TODO: implement createState
     return _Expenses();
   }
 }
@@ -20,9 +20,22 @@ class _Expenses extends State<Expenses> {
     Expense(title: 'Cinema', amount: 15.69, date: DateTime.now(), category: Category.leisure),
   ];
 
+  void _openAddExpenseOverlay(){
+    showModalBottomSheet(context: context, builder: (ctx) => const NewExpense());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Flutter Expense Tracker'),
+        actions: [
+          IconButton(
+            onPressed: _openAddExpenseOverlay,
+            icon: const Icon(Icons.add),
+          ),
+        ],
+      ),
       body: Column(
         children:[
           const Text('This is ChartSpace.'),
