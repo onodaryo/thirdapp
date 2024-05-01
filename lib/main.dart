@@ -27,15 +27,16 @@ void main() {
           ),
         ),
         bottomSheetTheme: const BottomSheetThemeData(
-          modalBackgroundColor: Color.fromARGB(255, 255, 172, 182),
+          modalBackgroundColor: Color.fromARGB(255, 220, 163, 176),
         ),
         textTheme: ThemeData().textTheme.copyWith(
           titleLarge: TextStyle(
-            fontWeight: FontWeight.normal,
+            fontWeight: FontWeight.bold,
             color: kColorScheme.onSecondaryContainer,
-            fontSize: 14,
+            fontSize: 16,
           ),
         ),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 159, 52, 77),
       ),
       home: const Expenses(),
     ),
