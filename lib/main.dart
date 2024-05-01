@@ -54,7 +54,7 @@ void main() {
             fontSize: 16,
           ),
         ),
-        scaffoldBackgroundColor: const Color.fromARGB(255, 159, 52, 77),
+        // scaffoldBackgroundColor: const Color.fromARGB(255, 159, 52, 77),
       ),
       themeMode: ThemeMode.system,
       home: const Expenses(),

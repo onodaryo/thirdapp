@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:keihi/models/expense.dart';
+import 'package:keihi/widgets/chart/chart.dart';
 import 'package:keihi/widgets/expense_list/expensesList.dart';
 import 'package:keihi/widgets/expense_list/newExpense.dart';
 
@@ -78,7 +79,8 @@ class _Expenses extends State<Expenses> {
       ),
       body: Column(
         children:[
-          const Text('This is ChartSpace.'),
+          Chart(expenses: _registeredExpense),
+          //const Text('This is ChartSpace.'),
           Expanded(
             child: mainContents,
           ),
