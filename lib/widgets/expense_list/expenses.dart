@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:keihi/models/expense.dart';
-import 'package:keihi/widgets/expensesList.dart';
-import 'package:keihi/widgets/newExpense.dart';
+import 'package:keihi/widgets/expense_list/expensesList.dart';
+import 'package:keihi/widgets/expense_list/newExpense.dart';
 
 class Expenses extends StatefulWidget {
   const Expenses({super.key});
