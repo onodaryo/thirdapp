@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:keihi/models/expense.dart';
-import 'package:keihi/widgets/expenseItem.dart';
+import 'package:keihi/widgets/expense_list/expenseItem.dart';
 
 class ExpensesList extends StatelessWidget {
   const ExpensesList({super.key, required this.expenses, required this.onRemovedExpense});

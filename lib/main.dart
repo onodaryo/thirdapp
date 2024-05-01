@@ -1,16 +1,34 @@
 import 'package:flutter/material.dart';
 
-import 'package:keihi/widgets/expenses.dart';
+import 'package:keihi/widgets/expense_list/expenses.dart';
 
 var kColorScheme = ColorScheme.fromSeed(
   seedColor: const Color.fromARGB(
     255, 160, 7, 7,),
 );
 
+var kDarkColorScheme = ColorScheme.fromSeed(
+  seedColor: const Color.fromARGB(255, 5, 99, 125),
+  brightness: Brightness.dark,
+);
+
 void main() {
   runApp(
     MaterialApp(
       // theme: ThemeData(useMaterial3: true),
+      darkTheme: ThemeData.dark().copyWith(
+        colorScheme: kDarkColorScheme,
+        cardTheme: const CardTheme().copyWith(
+            color: kDarkColorScheme.secondaryContainer,
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8)
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kDarkColorScheme.primaryContainer,
+            foregroundColor: kDarkColorScheme.onPrimaryContainer
+          ),
+        ),
+      ),
       theme: ThemeData().copyWith(
         colorScheme: kColorScheme,
         appBarTheme: const AppBarTheme().copyWith(
@@ -38,6 +56,7 @@ void main() {
         ),
         scaffoldBackgroundColor: const Color.fromARGB(255, 159, 52, 77),
       ),
+      themeMode: ThemeMode.system,
       home: const Expenses(),
     ),
   );
