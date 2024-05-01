@@ -6,7 +6,9 @@ import 'package:intl/intl.dart';
 import 'package:keihi/models/expense.dart';
 
 class NewExpense extends StatefulWidget{
-  const NewExpense({super.key});
+  const NewExpense({super.key, required this.onAddExpense});
+
+  final void Function(Expense expense) onAddExpense;
 
   @override
   State<NewExpense> createState() {
@@ -36,6 +38,31 @@ class _NewExpenseState extends State<NewExpense>{
     setState(() {
       _selectedDate = pickedDate;
     });
+  }
+
+  void _submitExpenseData(){
+    final enteredAmount = double.tryParse(_amountController.text) ?? -1;// パースできないとnullが返る
+    if(_titleController.text.trim().isEmpty || enteredAmount <= 0 || _selectedDate == null){
+      // show error message
+      showDialog(
+        context: context, builder: (ctx) => AlertDialog(
+          title: const Text('Invalid Input!'),
+          content: const Text('Please make sure a valid title, amount, date, and catagory was entered.'),
+          actions: [
+            TextButton(onPressed: (){
+              Navigator.pop(ctx);
+            },
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+    // 値が正しかった時の処理
+    widget.onAddExpense(
+      Expense(title: _titleController.text, amount: enteredAmount, date: _selectedDate!, category: _selectedCategory)
+    );
   }
 
   @override
@@ -116,8 +143,7 @@ class _NewExpenseState extends State<NewExpense>{
               ),
               ElevatedButton(
                 onPressed: (){
-                  print('title: ${_titleController.text}');
-                  print('amount: ${_amountController.text}');
+                  _submitExpenseData();
                 },
                 child: const Text('Save Expense.'),
               ),
